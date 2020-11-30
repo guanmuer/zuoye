@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            list-style: none;
+        }
+
+        html,
+        body,
+        ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        #wall {
+            position: relative;
+        }
+
+        #wall li {
+            width: 320px;
+            height: 426px;
+            box-shadow: 0 0 15px #000;
+            position: absolute;
+
+            transition: all 1s;
+        }
+
+        #wall li img {
+            width: 320px;
+            height: 426px;
+        }
+
+        #wall li.current {
+            left: 50% !important;
+            top: 50% !important;
+            transform: rotate(0) translate(-50%, -50%) scale(1.2, 1.2) !important;
+            z-index: 9;
+        }
+    </style>
+</head>
+
+<body>
+    201916180317 郑杰仁 
+<a href="zwjs.html">自我介绍</a>
+    
+    <ul id=wall>
+        <li style="left: 380.033px; top: 69.882px; transform: rotate(349.36deg);" class> <img src="./01.jpg" alt=""></li>
+        <li style="left: 371.528px; top: 232.676px; transform: rotate(334.107deg);"class> <img src="./02.jpg"alt=""></li>
+        <li style="left: 917.307px; top: 10.0634px; transform: rotate(138.367deg);" class> <img src="./03.jpg"alt=""></li>
+    </ul>
+    <script>
+
+        window.onload = function () {
+            var wall = document.getElementById('wall');
+            var maxWidth = document.documentElement.clientWidth - 320;
+            var maxHeight = document.documentElement.clientHeight - 426;
+ 
+
+            for (var i = 1; i < 3; ++i) {
+
+                var li = document.createElement("li");
+                wall.appendChild(li);
+
+
+                var img = document.createElement("img");
+                if (i < 9)
+                    img.src = "./0"+(i + 1) + ".jpg";
+                else
+                    img.src = "./"+ (i + 1) + ".jpg";
+                li.appendChild(img);
+
+
+                li.style.left = Math.random() * maxWidth + 'px';
+                li.style.top = Math.random() * maxHeight + 'px';
+
+
+                li.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+            }
+
+            var allLis = wall.children;
+            for (var i = 0; i < allLis.length; ++i) {
+                var li = allLis[i];
+
+                li.onclick = function () {
+                    for (var j = 0; j < allLis.length; ++j)
+                        allLis[j].className = '';
+                    this.className = "current";
+                }
+            }
+        }
+
+    </script>
+</body>
+
+<ml>
